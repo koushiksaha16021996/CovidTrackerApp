@@ -1,21 +1,52 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import Covid19Tracker from './Covid19Tracker/Covid19Tracker';
+import Covid19VaccineTracker from './Covid19VaccineTracker/Covid19VaccineTracker';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import DeveloperContact from './DeveloperContact/DeveloperContact';
+import { Fontisto , MaterialIcons } from '@expo/vector-icons';
 
 export default function App() {
+  const Bottomtab= createMaterialBottomTabNavigator();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Bottomtab.Navigator
+          initialRouteName="Covid19Tracker"
+          activeColor="white"
+          barStyle={{ backgroundColor: 'black' }}
+        >
+          <Bottomtab.Screen name="Covid19 Tracker"
+            component={Covid19Tracker}
+            options={{
+              tabBarLabel: 'Covid19 Tracker',
+              tabBarIcon: ({ color }) => (
+                <MaterialIcons name="coronavirus" size={24} color="#ff6c5e" />
+              ),
+            }}
+          />
+          <Bottomtab.Screen name="Covid19 Vaccine Tracker"
+            component={Covid19VaccineTracker}
+            options={{
+              tabBarLabel: 'Covid19 Vaccine Tracker',
+              tabBarIcon: ({ color }) => (
+                <Fontisto name="injection-syringe" size={24} color="lightblue"/>
+              ),
+            }}
+          />
+          <Bottomtab.Screen name="Developer Contact"
+            component={DeveloperContact}
+            options={{
+              tabBarLabel: 'Contact Us',
+              tabBarIcon: ({ color }) => (
+                <MaterialIcons name="contact-page" size={24} color="dodgerblue" />
+              ),
+            }}
+          />
+        </Bottomtab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
