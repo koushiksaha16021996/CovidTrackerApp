@@ -14,8 +14,8 @@ export default function App() {
       <NavigationContainer>
         <Bottomtab.Navigator
           initialRouteName="Covid19Tracker"
-          activeColor="white"
-          barStyle={{ backgroundColor: 'black' }}
+          activeColor="black"
+          barStyle={{ backgroundColor: 'white' }}
         >
           <Bottomtab.Screen name="Covid19 Tracker"
             component={Covid19Tracker}
@@ -29,9 +29,9 @@ export default function App() {
           <Bottomtab.Screen name="Covid19 Vaccine Tracker"
             component={Covid19VaccineTracker}
             options={{
-              tabBarLabel: 'Covid19 Vaccine Tracker',
+              tabBarLabel: 'Vaccine Tracker',
               tabBarIcon: ({ color }) => (
-                <Fontisto name="injection-syringe" size={24} color="lightblue"/>
+                <Fontisto name="injection-syringe" size={24} color="dodgerblue"/>
               ),
             }}
           />
@@ -40,7 +40,7 @@ export default function App() {
             options={{
               tabBarLabel: 'Contact Us',
               tabBarIcon: ({ color }) => (
-                <MaterialIcons name="contact-page" size={24} color="dodgerblue" />
+                <MaterialIcons name="contact-page" size={24} color="grey" />
               ),
             }}
           />
